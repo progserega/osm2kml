@@ -1,0 +1,5 @@
+There is no need to install, just run:
+
+osm2kml.py foo.osm > foo.kml
+
+Note that you must have the required Python modules installed.
