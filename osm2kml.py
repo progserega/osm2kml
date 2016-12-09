@@ -209,13 +209,13 @@ for way in ways.values():
 for node in nodes.values():
   if 'power' in node:
     placemark = kmlDoc.createElement('Placemark')
+    note=""
+    operator=""
     if 'ref' in node:
       name = kmlDoc.createElement('name')
       nameText = kmlDoc.createTextNode(node['ref'])
       name.appendChild(nameText)
       placemark.appendChild(name)
-      note=""
-      operator=""
     if 'note' in node:
       note=node["note"]
     if 'operator' in node:
