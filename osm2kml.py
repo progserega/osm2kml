@@ -127,6 +127,15 @@ base = """
 		</IconStyle>
     </Style>
 
+    <Style id="sub_station">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/placemark_square.png</href>
+			</Icon>
+		</IconStyle>
+    </Style>
+
   </Document>
 </kml>
 """
@@ -252,6 +261,7 @@ for node in nodes.values():
       coord.appendChild(coordText)
       tower.appendChild(coord)
       placemark.appendChild(tower)
+
     if node["power"]=="link":
       z=0
       tower = kmlDoc.createElement('Point')
@@ -279,6 +289,30 @@ for node in nodes.values():
       coord.appendChild(coordText)
       tower.appendChild(coord)
       placemark.appendChild(tower)
+
+    if node["power"]=="sub_station":
+      z=1
+      tower = kmlDoc.createElement('Point')
+      extrude = kmlDoc.createElement('extrude')
+      extrudeText = kmlDoc.createTextNode('1')
+      extrude.appendChild(extrudeText)
+      tower.appendChild(extrude)
+      altitude = kmlDoc.createElement('altitudeMode')
+      altitudeText = kmlDoc.createTextNode('relativeToGround')
+      altitude.appendChild(altitudeText)
+      tower.appendChild(altitude)
+      StyleId = "sub_station"
+      style = kmlDoc.createElement('styleUrl')
+      StyleText = kmlDoc.createTextNode('#'+StyleId)
+      style.appendChild(StyleText)
+      placemark.appendChild(style)
+      coord = kmlDoc.createElement('coordinates')
+      nodelist = ''.join('{x},{y},{z} '.format(x=node.lon, y=node.lat, z=z))
+      coordText = kmlDoc.createTextNode(nodelist)
+      coord.appendChild(coordText)
+      tower.appendChild(coord)
+      placemark.appendChild(tower)
+
     doc.appendChild(placemark)
 
 #
