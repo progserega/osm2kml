@@ -78,6 +78,71 @@ base = """
   <Document>
     <name>Объекты АО ДРСК</name>
     <description>Converted from OSM data with osm2kml</description>
+
+    <Style id="no_voltage">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ffff00ea</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ffff00ea</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="0_4kv">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ff00ff00</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff00ff00</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="6kv">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ff6496c8</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff6496c8</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="10kv">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ff640064</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff640064</color>
+      </PolyStyle>
+    </Style>
+
     <Style id="35kv">
 		<IconStyle>
 			<scale>0.8</scale>
@@ -93,6 +158,7 @@ base = """
         <color>ff326482</color>
       </PolyStyle>
     </Style>
+
     <Style id="110kv">
 		<IconStyle>
 			<scale>0.8</scale>
@@ -106,6 +172,38 @@ base = """
       </LineStyle>
       <PolyStyle>
         <color>ffc8b400</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="220kv">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ff00c8c8</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff00c8c8</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="500kv">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://www.earthpoint.us/Dots/GoogleEarth/shapes/triangle.png</href>
+			</Icon>
+		</IconStyle>
+      <LineStyle>
+        <width>1.5</width>
+        <color>ff0a0fa5</color>
+      </LineStyle>
+      <PolyStyle>
+        <color>ff0a0fa5</color>
       </PolyStyle>
     </Style>
 
@@ -156,11 +254,29 @@ for way in ways.values():
       description.appendChild(descriptionText)
       placemark.appendChild(description)
     if 'voltage' in way:
-      StyleId="35kv"
+      StyleId="no_voltage"
       z=10
-      if way['voltage']=="110000":
-        StyleId="110kv"
+      if way['voltage']=="500000":
+        StyleId="500kv"
+        z=25
+      elif way['voltage']=="220000":
+        StyleId="220kv"
         z=20
+      elif way['voltage']=="110000":
+        StyleId="110kv"
+        z=15
+      elif way['voltage']=="35000":
+        StyleId="35kv"
+        z=10
+      elif way['voltage']=="10000":
+        StyleId="10kv"
+        z=8
+      elif way['voltage']=="6000":
+        StyleId="6kv"
+        z=6
+      elif way['voltage']=="400":
+        StyleId="0_4kv"
+        z=5
       description = kmlDoc.createElement('styleUrl')
       descriptionText = kmlDoc.createTextNode('#'+StyleId)
       description.appendChild(descriptionText)
@@ -235,11 +351,29 @@ for node in nodes.values():
       description.appendChild(descriptionText)
       placemark.appendChild(description)
     if 'voltage' in node:
-      StyleId="35kv"
+      StyleId="no_voltage"
       z=10
-      if node['voltage']=="110000":
-        StyleId="110kv"
+      if node['voltage']=="500000":
+        StyleId="500kv"
+        z=25
+      elif node['voltage']=="220000":
+        StyleId="220kv"
         z=20
+      elif node['voltage']=="110000":
+        StyleId="110kv"
+        z=15
+      elif node['voltage']=="35000":
+        StyleId="35kv"
+        z=10
+      elif node['voltage']=="10000":
+        StyleId="10kv"
+        z=8
+      elif node['voltage']=="6000":
+        StyleId="6kv"
+        z=6
+      elif node['voltage']=="400":
+        StyleId="0_4kv"
+        z=5
       description = kmlDoc.createElement('styleUrl')
       descriptionText = kmlDoc.createTextNode('#'+StyleId)
       description.appendChild(descriptionText)
