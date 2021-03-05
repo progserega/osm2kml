@@ -248,6 +248,11 @@ for way in ways.values():
       nameText = kmlDoc.createTextNode(way['name'])
       name.appendChild(nameText)
       placemark.appendChild(name)
+    elif 'alt_name' in way:
+      name = kmlDoc.createElement('name')
+      nameText = kmlDoc.createTextNode(way['alt_name'])
+      name.appendChild(nameText)
+      placemark.appendChild(name)
     if 'operator' in way:
       description = kmlDoc.createElement('description')
       descriptionText = kmlDoc.createTextNode(way['operator'])
@@ -302,7 +307,7 @@ for way in ways.values():
       outer.appendChild(ring)
       polygon.appendChild(outer)
       placemark.appendChild(polygon)
-    if way["power"]=="line":
+    if way["power"]=="line" or way["power"]=="minor_line":
       LineString = kmlDoc.createElement('LineString')
       altitude = kmlDoc.createElement('altitudeMode')
       altitudeText = kmlDoc.createTextNode('relativeToGround')
@@ -378,7 +383,7 @@ for node in nodes.values():
       descriptionText = kmlDoc.createTextNode('#'+StyleId)
       description.appendChild(descriptionText)
       placemark.appendChild(description)
-    if node["power"]=="tower":
+    if node["power"]=="tower" or node["power"]=="pole":
       tower = kmlDoc.createElement('Point')
       extrude = kmlDoc.createElement('extrude')
       extrudeText = kmlDoc.createTextNode('1')
