@@ -87,7 +87,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ffff00ea</color>
       </LineStyle>
       <PolyStyle>
@@ -103,7 +103,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff00ff00</color>
       </LineStyle>
       <PolyStyle>
@@ -119,7 +119,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff6496c8</color>
       </LineStyle>
       <PolyStyle>
@@ -135,7 +135,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff640064</color>
       </LineStyle>
       <PolyStyle>
@@ -151,7 +151,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff326482</color>
       </LineStyle>
       <PolyStyle>
@@ -167,7 +167,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ffc8b400</color>
       </LineStyle>
       <PolyStyle>
@@ -183,7 +183,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff00c8c8</color>
       </LineStyle>
       <PolyStyle>
@@ -199,7 +199,7 @@ base = """
 			</Icon>
 		</IconStyle>
       <LineStyle>
-        <width>1.5</width>
+        <width>3</width>
         <color>ff0a0fa5</color>
       </LineStyle>
       <PolyStyle>
@@ -321,7 +321,7 @@ for way in ways.values():
       LineString.appendChild(coord)
       placemark.appendChild(LineString)
     if way["power"]=="cable":
-      z=0
+      z=1
       LineString = kmlDoc.createElement('LineString')
       altitude = kmlDoc.createElement('altitudeMode')
       altitudeText = kmlDoc.createTextNode('relativeToGround')
